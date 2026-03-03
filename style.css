@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box; /* لضمان أن الحواف لا تزيد من حجم العناصر */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a;
+    overflow: hidden; /* يمنع ظهور أي سكرول نهائياً */
+}
+
+#caculator {
+    width: 100%;
+    max-width: 400px; /* العرض الأقصى كما طلبت */
+    height: 100vh; /* تأخذ طول الشاشة بالكامل في الموبايل */
+    max-height: 100vh; /* ممنوع تتجاوز الطول */
+    background-color: #121212;
+    display: flex;
+    flex-direction: column; /* ترتيب العناصر عمودياً */
+    padding: 60px 10px; /* مسافة داخلية حول المحتوى */
+    border-radius: 0; /* في الموبايل تكون بدون حواف دائرية لملء الشاشة */
+}
+
+/* الشاشة (Input) */
+input {
+    width: 100%;
+    height: 15vh; /* تأخذ 15% من طول الشاشة */
+    min-height: 80px;
+    background-color: rgb(94, 94, 94);
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    color: white;
+    text-align: right;
+    padding: 10px;
+}
+
+/* منطقة الأزرار */
+#keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 أعمدة */
+    grid-template-rows: repeat(5, 1fr);    /* 5 صفوف */
+    gap: 8px;
+    flex-grow: 1; /* تأخذ بقية مساحة الشاشة المتوفرة */
+    padding-bottom: 10px;
+}
+
+button {
+    width: 100%;
+    height: 100%; /* الزر يتمدد ليملأ مساحة الـ Grid المتاحة له */
+    background-color: rgb(94, 94, 94);
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-size: clamp(18px, 5vw, 30px); /* خط مرن يصغر مع صغر الشاشة */
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:active {
+    background-color: rgb(138, 138, 138);
+    filter: brightness(1.2);
+}
+
+.but {
+    background-color: #ff4800b9;
+}
+
+/* الزر الأخير (يساوي) */
+.but:last-child {
+    grid-column: span 2; /* يأخذ مساحة عمودين */
+}
+
+/* تنسيق للشاشات الكبيرة (مثل الكمبيوتر) */
+@media (min-width: 480px) {
+    #caculator {
+        height: 650px; /* طول ثابت في الشاشات الكبيرة */
+        border-radius: 20px;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    }
+ 
+}
